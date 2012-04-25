@@ -1,0 +1,33 @@
+<h1>名簿登録</h1> 
+
+<table>
+  <tr>
+    <th>名前</th>
+    <th>住所</th>
+    <th>誕生日</th>
+    <th>年齢</th>
+    <th>身長</th>
+    <th>体重</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @personals.each do |personal| %>
+  <tr>
+    <td><%= personal.name %></td>
+    <td><%= personal.address %></td>
+    <td><%= personal.birthday %></td>
+    <td><%= personal.age %></td>
+    <td><%= personal.hight %></td>
+    <td><%= personal.weight %></td>
+    <td><%= link_to '表示', personal %></td>
+    <td><%= link_to '編集', edit_personal_path(personal) %></td>
+    <td><%= link_to '削除', personal, :confirm => '本当によろしいですか？', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新規登録', new_personal_path %>

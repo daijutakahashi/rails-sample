@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>名前:</b>
+  <%= @personal.name %>
+</p>
+
+<p>
+  <b>住所:</b>
+  <%= @personal.address %>
+</p>
+
+<p>
+  <b>生年月日:</b>
+  <%= @personal.birthday %>
+</p>
+
+<p>
+  <b>年齢:</b>
+  <%= @personal.age %>
+</p>
+
+<p>
+  <b>身長:</b>
+  <%= @personal.hight %>
+</p>
+
+<p>
+  <b>体重:</b>
+  <%= @personal.weight %>
+</p>
+
+
+<%= link_to '編集', edit_personal_path(@personal) %> |
+<%= link_to '戻る', personals_path %>
