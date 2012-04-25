@@ -1,0 +1,251 @@
+<!-- # HTMLファイルヘッダ部出力(ここから) -->
+<html lang="ja">
+<html xmlns:og="http://ogp.me/ns#"  xmlns:mixi="http://mixi-platform.com/ns#">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
+<meta name="robots" content="INDEX,FOLLOW">
+<link rel="stylesheet" href="/style.css" type="text/css">
+<link rel="shortcut icon" href="/favicon.ico">
+<SCRIPT language="JavaScript">
+<!--
+if(self !=top){
+top.location.href=self.location.href;
+}
+// -->
+</SCRIPT>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+  {lang: 'ja'}
+</script>
+
+<meta name="description" content="yumでエラーが出て困ってます">
+<meta name="KeyWords" content="yumでエラーが出て困ってます">
+<TITLE>№1200 yumでエラーが出て困ってます - Web Patio - CentOSで自宅サーバー構築</TITLE>
+</HEAD>
+<BODY>
+<b><font size=+3>№1200&nbsp;yumでエラーが出て困ってます</font></b><br><br>
+<a href="/">&lt;&lt;トップページへ</a>
+<a href="/patio/patio.cgi">&lt;&lt;質問掲示板へ</a>
+<hr>
+<br>
+<table summary="dmy"><tr><td>
+<script type="text/javascript"><!--
+google_ad_client = "pub-8226454717902609";
+/* 728x90, 作成済み 08/08/21 */
+google_ad_slot = "0574058250";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</td></tr>
+<tr><td align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8226454717902609";
+/* 728x15, 作成済み 08/08/23 */
+google_ad_slot = "4722867866";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</td></tr></table>
+
+<!-- # HTMLファイルヘッダ部出力(ここまで) -->
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr bgcolor='#FFFFFF'><td bgcolor='#8080C0'><font color='#FFFFFF'><b>yumでエラーが出て困ってます</b></font></td></tr>
+<tr><td>日時：&nbsp;2009/04/08 10:39<br>
+名前：&nbsp;<b>やま</b><br>
+<blockquote>お世話になります。<br>社内centos5サーバにsubversionを入れろと指令されました。<br>その際、yumでインストールしようとするとエラーがでます。<br>wgetを行っても同様です。<br><br>以下、コマンドです。<br>-----------------------------------------------------<br>[root@cent ~]# yum install subversion mod_dav_svn<br>Loading &quot;fastestmirror&quot; plugin<br>Loading mirror speeds from cached hostfile<br>Could not retrieve mirrorlist <a href="http://mirrorlist.centos.org/?release=5&amp;arch=i386&amp;repo=os" target="_target">http://mirrorlist.centos.org/?release=5&amp;arch=i386&amp;repo=os</a> error was<br>[Errno 4] IOError: &lt;urlopen error (-2, '\xe5\x90\x8d\xe5\x89\x8d\xe3\x81\xbe\xe3\x81\x9f\xe3\x81\xaf\xe3\x82\xb5\xe3\x83\xbc\xe3\x83\x93\xe3\x82\xb9\xe3\x81\x8c\xe4\xb8\x8d\xe6\x98\x8e\xe3\x81\xa7\xe3\x81\x99')&gt;<br>Error: Cannot find a valid baseurl for repo: base<br>-----------------------------------------------------<br><br>自分なりに調べてみましたが、どうしても解決方法がわかりません。<br>linux経験が乏しいのは承知しておりますが、<br>前任者からの引継ぎもなく、サーバー状況やネットワークもわかりません。<br>稼動中のシステムもあるため、下手に動かせない状況です。<br>ネットワークや原因などどこをチェックしたらよいか<br>ご教授願えますでしょうか？<br><br></blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№1)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 10:42<br>
+名前：&nbsp;<b>やま</b><br>
+<blockquote>yum.confとCentOS-Base.repoの情報忘れていました^^;<br><br><br>/etc/yum.conf<br>---------------------------------------------------<br>[main]<br>cachedir=/var/cache/yum<br>keepcache=0<br>debuglevel=2<br>logfile=/var/log/yum.log<br>distroverpkg=redhat-release<br>tolerant=1<br>exactarch=1<br>obsoletes=1<br>gpgcheck=1<br>plugins=1<br><br># Note: yum-RHN-plugin doesn't honor this.<br>metadata_expire=1h<br><br># Default.<br># installonly_limit = 3<br><br># PUT YOUR REPOS HERE OR IN separate files named file.repo<br># in /etc/yum.repos.d<br>---------------------------------------------------<br><br>/etc/yum.repos.d/CentOS-Base.repo<br>---------------------------------------------------<br># CentOS-Base.repo<br>#<br># This file uses a new mirrorlist system developed by Lance Davis for CentOS.<br># The mirror system uses the connecting IP address of the client and the<br># update status of each mirror to pick mirrors that are updated to and<br># geographically close to the client. You should use this for CentOS updates<br># unless you are manually picking other mirrors.<br>#<br># If the mirrorlist= does not work for you, as a fall back you can try the <br># remarked out baseurl= line instead.<br>#<br>#<br><br>[base]<br>name=CentOS-$releasever - Base<br>mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os<br>#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/<br>gpgcheck=1<br>gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5<br><br>#released updates <br>[updates]<br>name=CentOS-$releasever - Updates<br>mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates<br>#baseurl=http://mirror.centos.org/centos/$releasever/updates/$basearch/<br>gpgcheck=1<br>gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5<br><br>#packages used/produced in the build but not released<br>[addons]<br>name=CentOS-$releasever - Addons<br>mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=addons<br>#baseurl=http://mirror.centos.org/centos/$releasever/addons/$basearch/<br>gpgcheck=1<br>gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5<br><br>#additional packages that may be useful<br>[extras]<br>name=CentOS-$releasever - Extras<br>mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras<br>#baseurl=http://mirror.centos.org/centos/$releasever/extras/$basearch/<br>gpgcheck=1<br>gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5<br><br>#additional packages that extend functionality of existing packages<br>[centosplus]<br>name=CentOS-$releasever - Plus<br>mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus<br>#baseurl=http://mirror.centos.org/centos/$releasever/centosplus/$basearch/<br>gpgcheck=1<br>enabled=0<br>gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5<br>-------------------------------------------------------------------------<br><br></blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№2)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 11:21<br>
+名前：&nbsp;<b>中学生管理者</b><br>
+<blockquote>会社でもしproxyを使っている場合にはyum.confに設定が必要です。<br>google で「yum proxy 設定」とかで検索すると解かる思います。<br>(proxyを使ってなければ関係ありませんが・・・)<br><br>ちなみに<br>'\xe5\x90\x8d\xe5\x89\x8d\xe3\x81\xbe\xe3\x81\x9f\xe3\x81\xaf\xe3\x82\xb5\xe3\x83\xbc\xe3\x83\x93\xe3\x82\xb9\xe3\x81\x8c\xe4\xb8\x8d\xe6\x98\x8e\xe3\x81\xa7\xe3\x81\x99'<br>は'名前またはサービスが不明です'です。<br><br><br></blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№3)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 11:22<br>
+名前：&nbsp;<b>ZED</b><br>
+<blockquote><br>ネットにつながってないんじゃない？</blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№4)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 11:23<br>
+名前：&nbsp;<b>やま</b><br>
+<blockquote>経過報告です。<br><br>ネットワークが繋がっていないようです。<br>pingでIPアドレスだと返ってきますが、ホスト名だと返ってきません。<br><br>-----------------------------------------<br>[root@cent ~]# ping yahoo.co.jp<br>ping: unknown host yahoo.co.jp<br><br>[root@cent ~]# ping 124.83.139.192<br>PING 124.83.139.192 (124.83.139.192) 56(84) bytes of data.<br>64 bytes from 124.83.139.192: icmp_seq=1 ttl=51 time=18.3 ms<br>64 bytes from 124.83.139.192: icmp_seq=2 ttl=51 time=18.7 ms<br>64 bytes from 124.83.139.192: icmp_seq=3 ttl=51 time=19.0 ms<br>64 bytes from 124.83.139.192: icmp_seq=4 ttl=51 time=17.9 ms<br>64 bytes from 124.83.139.192: icmp_seq=5 ttl=51 time=17.9 ms<br>-----------------------------------------</blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№5)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 11:24<br>
+名前：&nbsp;<b>やま</b><br>
+<blockquote>ZEDさまご回答ありがとうございます。<br>ネットワーク設定はどうしたらいいか調査中です。<br>ここチェックしなさい！みたいなことがあれば助かりますm(__)m</blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№6)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 11:25<br>
+名前：&nbsp;<b>ZED</b><br>
+<blockquote><br>DNSとgateway、squid等の状況は？</blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№7)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 11:27<br>
+名前：&nbsp;<b>やま</b><br>
+<blockquote>中学生管理者さまご回答ありがとうございます。<br>返信が前後してしまい申し訳ありません。<br><br>前任者不在のためプロキシ設定しているかどうか<br>わからない状況です。<br><br>設定しているかどうかのコマンドチェック等<br>ありますでしょうか？m(__)m</blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№8)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 11:38<br>
+名前：&nbsp;<b>やま</b><br>
+<blockquote>ZEDさまご回答ありがとうございます。<br>ネットワークに疎く、今回初めて調べながら行っているので、ご返信が遅くなります。<br>以下の情報でわかりますでしょうか？<br>他に必要なコマンドやファイルはありますでしょうか？<br><br>-----------------------------------------<br>[root@cent ~]# cat /etc/sysconfig/network<br>NETWORKING=yes<br>NETWORKING_IPV6=yes<br>HOSTNAME=ホスト名<br>GATEWAY=192.168.2.1<br><br>[root@cent ~]# cat /etc/resolv.conf <br>search ######<br>nameserver 192.168.2.1<br><br>[root@cent ~]# ifconfig<br>eth0 Link encap:Ethernet HWaddr 00:13:D4:79:A2:61 <br> inet addr:192.168.4.65 Bcast:192.168.4.255 Mask:255.255.255.0<br>-----------------------------------------<br></blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№9)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 11:46<br>
+名前：&nbsp;<b>中学生管理者</b><br>
+<blockquote><br><font color="#808000">&gt;設定しているかどうかのコマンドチェック等</font><br><font color="#808000">&gt;ありますでしょうか？m(__)m</font><br><br>私も解からないのですが「確認くん」とかにアクセスすればproxyを使ってる<br>場合には表示されるような気がします。<br><a href="http://www.ugtop.com/spill.shtml" target="_target">http://www.ugtop.com/spill.shtml</a><br>(または <a href="http://211.4.228.10/spill.shtml" target="_target">http://211.4.228.10/spill.shtml</a> )<br></blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№10)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 11:49<br>
+名前：&nbsp;<b>中学生管理者</b><br>
+<blockquote>会社内部でproxyを使ってると確認くんでは表示されないかも。<br>よくわからなくてすみません。</blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№11)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 12:01<br>
+名前：&nbsp;<b>やま</b><br>
+<blockquote>中学生管理者さまご回答ありがとうございます。<br>確認くんなんですが、該当サーバにリモートでターミナル操作を行っているため、<br>ブラウザ利用ができません。<br>残念です。。。<br>コマンド打って結果取得みたいなものってあるんでしょうか？<br></blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№12)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 12:07<br>
+名前：&nbsp;<b>中学生管理者</b><br>
+<blockquote>使えないということで了解です。<br><br><font color="#808000">&gt;pingでIPアドレスだと返ってきますが、ホスト名だと返ってきません。</font><br><br>nslookupかdigコマンドでDNSサーバーの正引き、逆引きができるか<br>チェックしてみてはいかがでしょう？<br>できなければDNSサーバーの問題かも。<br>(やり方は <a href="http://centossrv.com/bind-centos5.shtml" target="_target">http://centossrv.com/bind-centos5.shtml</a> の「BIND確認」を参照です)<br></blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№13)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 12:33<br>
+名前：&nbsp;<b>ZED</b><br>
+<blockquote>[root@cent ~]# ifconfig<br>eth0 Link encap:Ethernet HWaddr 00:13:D4:79:A2:61 <br>inet addr:192.168.4.65 Bcast:192.168.4.255 Mask:255.255.255.0<br>gateway 192.168.2.1 だし・・・<br>この結果だと串存在しますね。<br><br><br><br></blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№14)</td></tr>
+<tr><td>日時：&nbsp;2009/04/08 14:35<br>
+名前：&nbsp;<b>やま</b><br>
+<blockquote>中学生管理者さまご回答ありがとうございます。<br>nslookupで以下エラーができました。<br>ご提示頂いたBIND確認致します。<br>---------------------------------------------<br>[root@cent ~]# nslookup 124.83.139.192<br>;; connection timed out; no servers could be reached<br>[root@cent ~]# nslookup yahoo.co.jp<br>;; connection timed out; no servers could be reached<br>---------------------------------------------<br><br>ZEDさまご回答ありがとうございます。<br>プロキシが存在するということは、<br>プロキシ越えの設定を行うということですよね。<br>もう少し自分でも色々と挑戦します。<br><br></blockquote>
+</td></tr>
+</table></p>
+<p><table border=1 cellspacing=0 cellpadding=5 width=100%>
+<tr><td bgcolor="#DCDCED"><b>Re: yumでエラーが出て困ってます</b>(№15)</td></tr>
+<tr><td>日時：&nbsp;2009/06/25 17:28<br>
+名前：&nbsp;<b>bt</b><br>
+<blockquote><br>/etc/yum.confでプロキシの設定を行ってみては?</blockquote>
+</td></tr>
+</table></p>
+<!-- # HTMLファイルフッタ部出力(ここから) -->
+<center>
+<form method="POST" action="/patio/patio.cgi#regist">
+ <input type="hidden" name="mode" value="view">
+ <input type="hidden" name="no" value="1200">
+ <input type="submit" value="このスレッドに返信する">
+</form>
+<font color="red"><b>※古いスレッドには返信できない場合があります</font></b>
+</center>
+<br>
+<div align=center>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-lang="ja">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="http://mixi.jp/share.pl" class="mixi-check-button" data-key="07aa0e918eba40b5acff9f3fee4f19ab53abd0a8">Check</a> <script type="text/javascript" src="http://static.mixi.jp/js/share.js"></script>
+<g:plusone></g:plusone>
+<iframe src="http://www.facebook.com/plugins/like.php?app_id=224172534269132&amp;href&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
+</div>
+<br>
+<div align=center>
+<table summary="dmy"><tr><td>
+<script type="text/javascript"><!--
+google_ad_client = "pub-8226454717902609";
+/* 728x90, 作成済み 08/08/21 */
+google_ad_slot = "0574058250";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</td></tr>
+<tr><td align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8226454717902609";
+/* 728x15, 作成済み 08/08/23 */
+google_ad_slot = "4722867866";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</td></tr></table>
+</div>
+<br>
+<br><div align=right><a href="#top">▲このページのトップへ戻る</a></div>
+<hr>
+<table summary="dmy" align="center">
+<tr>
+<td align="center">
+<a href="http://www.lpi.or.jp/" target="_blank">
+<img src="/img/lpi-lpic2.gif" alt="LPIロゴ" width="40" height="40" border="0">
+</a>
+</td>
+<td align="center">
+Copyright&copy; 2012 fallenangels, All rights reserved.<br>
+<a href="/link.shtml">ご自由にリンクしてください(連絡は不要です)</a>
+</td>
+</tr>
+</table>
+<div align="center">
+<a href="/mail/mail.cgi">本ページへのご意見・ご要望、誤字・脱字・リンク切れ等のご連絡はこちらからお願いします</a>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-6156018-1");
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
+
+<!-- # HTMLファイルフッタ部出力(ここまで) -->
